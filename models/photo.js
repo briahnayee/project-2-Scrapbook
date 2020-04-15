@@ -1,6 +1,22 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const commentSchema = new Schema ({
+    userId: {
+        type: Schema.Types.ObjectId,
+    },
+    text: {
+        type: String,
+        required: true,
+    }, 
+    userName: {
+        type: String,
+        required: true,
+    }
+}, {
+    timestamps: true
+})
+
 const photoSchema = new Schema ({
     description: {
         type: String,
@@ -10,32 +26,12 @@ const photoSchema = new Schema ({
         type: String,
         required: false
     },
-    comment: {
-        type: String,
-        required: false
-    },
+    comments: [commentSchema],
     userName: {
         type: String,
         required: true
     }
 
-}, {
-    timestamps: true
-})
-
-const commentSchema = new Schema ({
-    userId: {
-        type: Schema.Types.ObjectId,
-    },
-    text: {
-        type: String,
-        required: true,
-    }, 
-    comments: [commentSchema],
-    userName: {
-        type: String,
-        required: true,
-    }
 }, {
     timestamps: true
 })

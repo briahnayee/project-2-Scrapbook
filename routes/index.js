@@ -1,5 +1,5 @@
 var express = require('express');
-var router = express.Router();
+var router = require('express').Router();
 var passport = require('passport');
 
 /* GET home page. */
@@ -15,14 +15,14 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect : '/students',
-    failureRedirect : '/students'
+    successRedirect : '/feed',
+    failureRedirect : '/home'
   }
 ));
 
 router.get('/logout', function(req, res){
   req.logout();
-  res.redirect('/students');
+  res.redirect('/home');
 });
 
 router.get('/home', (req, res, next) => {
@@ -51,6 +51,10 @@ router.get('/login', (req, res, next) => {
 
 router.get('/singlePic/:id', (req, res, next) => {
   res.render('singlePic')
+});
+
+router.get('/newPhoto', (req, res, next) => {
+  res.render('newPhoto')
 });
 
 

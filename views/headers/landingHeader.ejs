@@ -6,20 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <title>Scrapbook</title>
+  <link href="https://fonts.googleapis.com/css?family=Courier+Prime:700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="navBar" id="landingNav">
   <nav class="nav">
-    <a class="navigation">SCRAPBOOK</a>
-    <ul class="right">
-      <li>
-      <% if (user) { %>
-        <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-      <% } else { %>
-        <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-      <% } %>
-      </li>
-    </ul>
-    <a class="navigation" href="/home">HOME</a>
-    <a class="navigation" href="/login">LOGIN</a>
-    <a class="navigation" href="/createAccount">CREATE ACCOUNT</a>
-  </nav>
+    <a class="navigation" href="/home">
+      <img class="logo" src="https://i.imgur.com/oJcsoiD.png" alt="logo">
+    </a>
+    <div>
+    <a href="/auth/google"><i></i>Login with Google</a>  
+    </div>
+    </nav>
+  </div>
+ 

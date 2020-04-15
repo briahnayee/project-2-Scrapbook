@@ -10,18 +10,18 @@ passport.use(new GoogleStrategy({
 },
   function (accessToken, refreshToken, profile, cb) {
     // a user has logged in with OAuth...
-    console.log("pp")
+    // return cb("DIDN'T RUN");
     User.findOne({ 'googleId': profile.id }, function (err, user) {
       if (err) return cb(err);
       if (user) {
-        if (!user.avatar) {
-          user.avatar = profile.photos[0].value;
-          user.save(function (err) {
-            return cb(null, user);
-          });
-        } else {
+        // if (!user.avatar) {
+        //   user.avatar = profile.photos[0].value;
+        //   user.save(function (err) {
+        //     return cb(null, user);
+        //   });
+        // } else {
           return cb(null, user);
-        }
+        // }
       } else {
         // we have a new user via OAuth!
         var newUser = new User({
@@ -29,7 +29,9 @@ passport.use(new GoogleStrategy({
           email: profile.emails[0].value,
           googleId: profile.id
         });
+        console.log('saving')
         newUser.save(function (err) {
+          console.log('saved', err);
           if (err) return cb(err);
           return cb(null, newUser);
         });
